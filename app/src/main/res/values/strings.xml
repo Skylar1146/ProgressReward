@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TodoReward</string>
+    <string name="tabTodo">To-Do</string>
+    <string name="tabRewards">Rewards</string>
+    <string name="lblPoints">Points:</string>
+    <string name="lblTaskName">Task:</string>
+    <string name="lblPointCost">Point Cost:</string>
+    <string name="lblReward">Reward Name:</string>
+</resources>

@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">ProductivityReward</string>
-    <string name="lblPoints">Points:</string>
-    <string name="lblTaskName">Task Name:</string>
-    <string name="titleRewards">Rewards</string>
-    <string name="titleTasks">Tasks</string>
-</resources>
