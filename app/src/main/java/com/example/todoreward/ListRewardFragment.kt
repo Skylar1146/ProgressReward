@@ -63,7 +63,7 @@ class ListRewardFragment : Fragment() {
     private fun setupRecyclerView(view: View) {
         recyclerView = view.findViewById(R.id.listViewRewards)
         //for showing items in list view
-        adapterReward = AdapterReward(mContext, listReward!!)
+        adapterReward = AdapterReward(listReward!!)
         recyclerView.adapter = adapterReward
 
         //Add spaces to recycler view items
@@ -75,23 +75,33 @@ class ListRewardFragment : Fragment() {
             object : SwipeHelperRewards(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
 
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                    val pos = viewHolder.layoutPosition
 
-                    val pos = viewHolder.adapterPosition
-
-                    var delete: Boolean = true
                     //if swipe right, collect reward
                     if (direction == ItemTouchHelper.RIGHT) {
 
                         var rewardItem: ItemReward = listReward!![pos]
-                      //  if(ptAmount)
-
-                        ptAmount -= listReward!![pos].pointCost
-                        (activity as MainActivity).updatePtTabTitle()//update tab to show point change
-                        toast("Collected Reward '" + listReward!![pos].rewardName + "'", mContext)
+                        if(rewardItem.canAfford())//Collect task
+                        {
+                            ptAmount -= rewardItem.pointCost
+                            (activity as MainActivity).updatePtTabTitle()//update tab to show point change
+                            toast("Collected Reward '" + rewardItem.rewardName + "'", mContext)
+                            listReward!!.removeAt(pos)
+                            adapterReward.notifyItemRemoved(pos)
+                        }
+                        else {
+                            toast(
+                                "You need ${rewardItem.pointCost - ptAmount} more points for this reward",
+                                mContext
+                            )
+                            //Calling this will undo swipe
+                            adapterReward.notifyItemChanged(pos)
+                        }
                     }
-
-                    listReward!!.removeAt(pos)
-                    adapterReward.notifyItemRemoved(pos)
+                    else {//Delete
+                        listReward!!.removeAt(pos)
+                        adapterReward.notifyItemRemoved(pos)
+                    }
                 }
                 //Set what background to show (red delete or green complete) on swipe
                 override fun onStartMovingLeft(viewHolder: RecyclerView.ViewHolder) {
@@ -114,6 +124,7 @@ class ListRewardFragment : Fragment() {
         itemTouchHelper.attachToRecyclerView(recyclerView)
 
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

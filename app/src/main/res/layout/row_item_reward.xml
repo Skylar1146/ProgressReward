@@ -34,7 +34,7 @@
         android:id="@+id/backgroundComplete"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/complete">
+        android:background="@color/rwdPurchase">
 
         <ImageView
             android:id="@+id/completeIcon"
@@ -43,7 +43,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
-            app:srcCompat="@drawable/ic_delete_foreground"/>
+            app:srcCompat="@drawable/ic_check_foreground" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -51,7 +51,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
             android:layout_toRightOf="@id/completeIcon"
-            android:text="Complete Task"
+            android:text="Collect Task"
             android:textColor="#fff"
             android:textSize="13dp" />
     </RelativeLayout>
@@ -65,15 +65,12 @@
 
         <TextView
             android:id="@+id/rewardText"
-            android:layout_width="150sp"
+            android:layout_width="250sp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+
             android:text="Text"
-            android:autoSizeMaxTextSize="24sp"
-            android:autoSizeMinTextSize="8sp"
-            android:autoSizeTextType="uniform"
-            android:textColor="#000000"
-            />
+            android:textColor="#000000" />
 
         <TextView
             android:id="@+id/pointCost"

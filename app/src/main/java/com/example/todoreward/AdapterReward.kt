@@ -1,16 +1,16 @@
 package com.example.todoreward
 
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 
-class AdapterReward(context: Context, listReward: MutableList<ItemReward>) :
+class AdapterReward(listReward: MutableList<ItemReward>) :
     RecyclerView.Adapter<AdapterReward.RewardViewHolder>() {
 
-    private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var rewardList = listReward
 
     // Create new views (invoked by the layout manager)
@@ -27,29 +27,35 @@ class AdapterReward(context: Context, listReward: MutableList<ItemReward>) :
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: RewardViewHolder, position: Int) {
 
+        var reward = rewardList[position]
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        val UID: String = rewardList[position].UID as String
-        val itemTextData = rewardList[position].rewardName as String
-        val itemPts = rewardList[position].pointCost as Integer
+        val UID: String = reward.UID as String
+        val itemTextData = reward.rewardName as String
+        val itemPts = reward.pointCost
 
         viewHolder.textLabel.text = itemTextData
         viewHolder.ptLabel.text = "+ $itemPts pts"
 
+//        if (!reward.canAfford())
+//            viewHolder.foreground.setBackgroundColor(Color.GRAY)
+//        else
+//            viewHolder.foreground.setBackgroundColor(Color.parseColor("#FFA500"))
+
     }
+
+
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = rewardList.size
 
     class RewardViewHolder(row: View) : RecyclerView.ViewHolder(row) {
 
-        val foreground : RelativeLayout = row!!.findViewById(R.id.foreground) as RelativeLayout
-        val background : RelativeLayout = row!!.findViewById(R.id.background) as RelativeLayout
+        val foreground: RelativeLayout = row.findViewById(R.id.foreground) as RelativeLayout
+        val background: RelativeLayout = row.findViewById(R.id.background) as RelativeLayout
 
 
-        val textLabel: TextView = row!!.findViewById(R.id.rewardText) as TextView
-        val ptLabel: TextView = row!!.findViewById(R.id.pointCost) as TextView
-
-
+        val textLabel: TextView = row.findViewById(R.id.rewardText) as TextView
+        val ptLabel: TextView = row.findViewById(R.id.pointCost) as TextView
     }
 }

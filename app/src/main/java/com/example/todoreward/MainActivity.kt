@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
@@ -35,15 +34,12 @@ class MainActivity : AppCompatActivity() {
     fun updatePtTabTitle()
     {
         val tabLayout = binding.tabs
-        val tab = tabLayout.getTabAt(2)
+        val tab = tabLayout.getTabAt(3)
         if (tab != null) {
-            tab.text = resources.getString(TAB_TITLES[2]) + ptAmount.toString();
+            tab.text = resources.getString(TAB_TITLES[3]) + ptAmount.toString();
         }
 
     }
-
-
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

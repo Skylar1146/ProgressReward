@@ -14,10 +14,9 @@ const val ROWS_IN_LIST: Int = 7
 /*
 In charge of taking the list of to do items and applying them to the list view
  */
-class AdapterToDo(context: Context, todolist: MutableList<ItemToDo>) :
+class AdapterToDo(todolist: MutableList<ItemToDo>) :
     RecyclerView.Adapter<AdapterToDo.ViewHolder>() {
 
-    private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var itemList = todolist
 
     // Create new views (invoked by the layout manager)
@@ -38,8 +37,7 @@ class AdapterToDo(context: Context, todolist: MutableList<ItemToDo>) :
         // contents of the view with that element
         val UID: String = itemList[position].UID as String
         val itemTextData = itemList[position].itemDataText as String
-        val itemPts = itemList[position].points as Integer
-        val done: Boolean = itemList[position].done as Boolean
+        val itemPts = itemList[position].points
 
         viewHolder.textLabel.text = itemTextData
         viewHolder.ptLabel.text = "+ $itemPts pts"
@@ -51,14 +49,11 @@ class AdapterToDo(context: Context, todolist: MutableList<ItemToDo>) :
 
     class ViewHolder(row: View) : RecyclerView.ViewHolder(row) {
 
-        val foreground : RelativeLayout = row!!.findViewById(R.id.foreground) as RelativeLayout
-        val background : RelativeLayout = row!!.findViewById(R.id.background) as RelativeLayout
+        val foreground : RelativeLayout = row.findViewById(R.id.foreground) as RelativeLayout
+        val background : RelativeLayout = row.findViewById(R.id.background) as RelativeLayout
 
 
-        val textLabel: TextView = row!!.findViewById(R.id.item_text) as TextView
-        val ptLabel: TextView = row!!.findViewById(R.id.pointsGiven) as TextView
-
-
+        val textLabel: TextView = row.findViewById(R.id.item_text) as TextView
+        val ptLabel: TextView = row.findViewById(R.id.pointsGiven) as TextView
     }
-
 }

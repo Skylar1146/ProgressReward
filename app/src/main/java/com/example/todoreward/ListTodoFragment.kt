@@ -66,8 +66,6 @@ class ListTodoFragment : Fragment() {
 
             addToDoItem(newTodoItem)
         }
-
-
     }
 
 
@@ -84,7 +82,7 @@ class ListTodoFragment : Fragment() {
 
     }
 
-    fun addToDoItem(itemToDo: ItemToDo) {
+    private fun addToDoItem(itemToDo: ItemToDo) {
         todoItemToDos?.add(itemToDo)
         adapterToDo.notifyDataSetChanged()
     }
@@ -99,11 +97,11 @@ class ListTodoFragment : Fragment() {
     private fun setupRecyclerView(view: View) {
         recyclerView = view.findViewById(R.id.listView)
         //for showing items in list view
-        adapterToDo = AdapterToDo(mContext, todoItemToDos!!)
+        adapterToDo = AdapterToDo(todoItemToDos!!)
         recyclerView.adapter = adapterToDo
 
         //Add spaces to recycler view items
-        var spacingItemDecorator: SpacingItemDecoration = SpacingItemDecoration()
+        var spacingItemDecorator = SpacingItemDecoration()
         recyclerView.addItemDecoration(spacingItemDecorator)
 
 
@@ -112,7 +110,7 @@ class ListTodoFragment : Fragment() {
 
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
 
-                    val pos = viewHolder.adapterPosition
+                    val pos = viewHolder.layoutPosition
 
                     //if swipe right, add pts
                     if (direction == ItemTouchHelper.RIGHT) {
@@ -194,8 +192,4 @@ class ListTodoFragment : Fragment() {
 
 
     }
-
-//    override fun onToDoAdded(item: ToDoItem) {
-//        toast("added",mContext)
-//    }
 }

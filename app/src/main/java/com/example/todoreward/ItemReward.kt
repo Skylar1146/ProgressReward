@@ -6,8 +6,7 @@ import androidx.lifecycle.ViewModel
 
 class ItemReward {
 
-    companion object Factory
-    {
+    companion object Factory {
         fun createRewardItem(): ItemReward = ItemReward()
     }
 
@@ -15,15 +14,17 @@ class ItemReward {
     var rewardName: String? = null
     var pointCost: Int = 0
 
+    fun canAfford(): Boolean {
+        return ptAmount >= pointCost
+    }
+
 }
 
-class RewardItemModel: ViewModel()
-{
+class RewardItemModel : ViewModel() {
     private val mutableToDoItem = MutableLiveData<ItemReward>()
-    val selectedItemReward : LiveData<ItemReward> get() = mutableToDoItem
+    val selectedItemReward: LiveData<ItemReward> get() = mutableToDoItem
 
-    fun setItem(todoItemReward:ItemReward)
-    {
+    fun setItem(todoItemReward: ItemReward) {
         mutableToDoItem.value = todoItemReward
     }
 
