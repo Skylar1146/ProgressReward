@@ -20,6 +20,8 @@ public fun getRandomString(length: Int): String {
         .map { allowedChars.random() }
         .joinToString("")
 }
+
+public var ptAmount:Int = 0;
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding

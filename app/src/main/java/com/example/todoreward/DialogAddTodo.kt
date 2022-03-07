@@ -12,9 +12,6 @@ import androidx.fragment.app.activityViewModels
 
 
 class DialogAddTodo : DialogFragment() {
-
-//    private lateinit var onTodoAdded: ToDoAddedListener
-
     companion object {
         const val TAG = "Dialog Add Task"
     }
@@ -44,21 +41,14 @@ class DialogAddTodo : DialogFragment() {
             val todoItemData = ToDoItem.createToDoItem()
 
             var taskNameText =
-                view.findViewById<TextView>(R.id.editTextTaskName)
+                view.findViewById<TextView>(R.id.editTextRwdName)
 
-            if (taskNameText != null)
-                todoItemData.itemDataText = taskNameText?.text.toString()
+            todoItemData.itemDataText = taskNameText?.text.toString()
             todoItemData.done = false
 
             todoItemData.UID = getRandomString(Int.SIZE_BITS - 1)
 
-//            Frag_ToDoList().adapter.notifyDataSetChanged()
-            //b.setItem(todoItemData)
-            //todoItemModel.setItem(todoItemData)
-
-            //onTodoAdded.onToDoAdded(todoItemData)
-
-            // Set a new item
+            //Set viewmodel to this, to be grabbed by FragToDoList
             viewModel.setItem(todoItemData)
             this.dismiss()
 

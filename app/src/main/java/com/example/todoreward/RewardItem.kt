@@ -12,6 +12,7 @@ class RewardItem {
     }
 
     var UID: String? = null
+    var rewardName: String? = null
     var pointCost: Int = 0
 
 }

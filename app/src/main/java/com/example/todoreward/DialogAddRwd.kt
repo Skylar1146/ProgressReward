@@ -1,3 +1,5 @@
+package com.example.todoreward
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,7 +22,6 @@ class DialogAddRwd : DialogFragment() {
 
     private val viewModel: RewardItemModel by activityViewModels()
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -35,16 +36,17 @@ class DialogAddRwd : DialogFragment() {
             val rewardItemData = RewardItem.createRewardItem()
 
             var taskNameText =
-                view.findViewById<TextView>(R.id.editTextRwdName)
+                view.findViewById<TextView>(R.id.dlgTextRewardName)
 
+            rewardItemData.rewardName = taskNameText?.text.toString()
             rewardItemData.UID = getRandomString(Int.SIZE_BITS - 1)
+
 
             // Set a new item
             viewModel.setItem(rewardItemData)
             this.dismiss()
 
         }
-
         return view
     }
 }
