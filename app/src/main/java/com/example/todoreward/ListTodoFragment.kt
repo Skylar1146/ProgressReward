@@ -52,9 +52,12 @@ class FragToDoList : Fragment() {
             "Schedule Dentist Appointment",
             "Wash Car",
             "Finish test 2",
-            "Install new shelves"
+            "Install new shelves",
+            "Vaccum Car",
+            "Do Laundry",
+            "Do the dishes"
         )
-        val ptRewards = arrayOf(1, 2, 1, 2, 4, 6)
+        val ptRewards = arrayOf(1, 2, 1, 2, 4, 6,2,2,1)
         for (i in todoItems.indices) {
             var newTodoItem = ToDoItem.createToDoItem()
             newTodoItem.itemDataText = todoItems[i]

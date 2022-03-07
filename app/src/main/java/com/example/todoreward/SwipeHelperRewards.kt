@@ -6,20 +6,10 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 
 
-abstract class SwipeHelperRewards(dragDirs: Int,
-                                     swipeDirs: Int
+abstract class SwipeHelperRewards(
+    dragDirs: Int,
+    swipeDirs: Int
 ) : ItemTouchHelper.SimpleCallback(dragDirs, swipeDirs) {
-
-
-    var listener: RecyclerItemTouchHelperListener? = null
-
-    open fun RecyclerItemTouchHelper(
-        dragDirs: Int,
-        swipeDirs: Int,
-        listener: RecyclerItemTouchHelperListener?
-    ) {
-        this.listener = listener
-    }
 
     override fun onMove(
         recyclerView: RecyclerView,
@@ -72,24 +62,20 @@ abstract class SwipeHelperRewards(dragDirs: Int,
             actionState, isCurrentlyActive
         )
 
-        if(dX >0) {
+        if (dX > 0) {
             onStartMovingRight(viewHolder)
         } else {
             onStartMovingLeft(viewHolder)
         }
     }
 
-    open fun onStartMovingLeft(viewHolder: RecyclerView.ViewHolder)
-    {
-    }
-    open fun onStartMovingRight(viewHolder: RecyclerView.ViewHolder)
-    {
+    open fun onStartMovingLeft(viewHolder: RecyclerView.ViewHolder) {
     }
 
-
+    open fun onStartMovingRight(viewHolder: RecyclerView.ViewHolder) {
+    }
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-        listener!!.onSwiped(viewHolder, direction, viewHolder.adapterPosition)
     }
 
     override fun convertToAbsoluteDirection(flags: Int, layoutDirection: Int): Int {
