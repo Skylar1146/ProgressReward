@@ -11,7 +11,7 @@ abstract class SwipeToDeleteCallback(dragDirs: Int,
 ) : ItemTouchHelper.SimpleCallback(dragDirs, swipeDirs) {
 
 
-    private var listener: RecyclerItemTouchHelperListener? = null
+    var listener: RecyclerItemTouchHelperListener? = null
 
     open fun RecyclerItemTouchHelper(
         dragDirs: Int,
@@ -71,7 +71,22 @@ abstract class SwipeToDeleteCallback(dragDirs: Int,
             c, recyclerView, foregroundView, dX, dY,
             actionState, isCurrentlyActive
         )
+
+        if(dX >0) {
+            onStartMovingRight(viewHolder)
+        } else {
+            onStartMovingLeft(viewHolder)
+        }
     }
+
+    open fun onStartMovingLeft(viewHolder: RecyclerView.ViewHolder)
+    {
+    }
+    open fun onStartMovingRight(viewHolder: RecyclerView.ViewHolder)
+    {
+    }
+
+
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
         listener!!.onSwiped(viewHolder, direction, viewHolder.adapterPosition)
@@ -83,5 +98,6 @@ abstract class SwipeToDeleteCallback(dragDirs: Int,
 
     interface RecyclerItemTouchHelperListener {
         fun onSwiped(viewHolder: RecyclerView.ViewHolder?, direction: Int, position: Int)
+
     }
 }

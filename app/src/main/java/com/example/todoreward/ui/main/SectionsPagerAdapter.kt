@@ -9,7 +9,7 @@ import com.example.todoreward.FragToDoList
 import com.example.todoreward.R
 import com.example.todoreward.ptAmount
 
-private val TAB_TITLES = arrayOf(
+val TAB_TITLES = arrayOf(
    R.string.tabTodo,
     R.string.tabRewards,
     R.string.lblPoints

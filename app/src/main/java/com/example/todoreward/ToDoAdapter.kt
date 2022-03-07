@@ -19,7 +19,6 @@ class ToDoAdapter(context: Context, todolist: MutableList<ToDoItem>) :
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var itemList = todolist
-    private lateinit var updateAndDelete: UpdateAndDelete
 
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
@@ -44,15 +43,7 @@ class ToDoAdapter(context: Context, todolist: MutableList<ToDoItem>) :
 
         viewHolder.textLabel.text = itemTextData
         viewHolder.ptLabel.text = "+ $itemPts pts"
-//
-//        if (updateAndDelete != null) {
-//            viewHolder.isDone.setOnClickListener {
-//                updateAndDelete.setIsDoneState(UID, !done)
-//            }
-//            viewHolder.isDeleted.setOnClickListener {
-//                updateAndDelete.onItemDelete(UID)
-//            }
-//        }
+
     }
 
     // Return the size of your dataset (invoked by the layout manager)

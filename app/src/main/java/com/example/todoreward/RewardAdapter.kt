@@ -4,10 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.CheckBox
-import android.widget.ImageButton
-import android.widget.TextView
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 
 class RewardAdapter(context: Context, rewardList: MutableList<RewardItem>) :
@@ -15,7 +12,6 @@ class RewardAdapter(context: Context, rewardList: MutableList<RewardItem>) :
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var rewardList = rewardList
-    private lateinit var updateAndDelete: UpdateAndDelete
 
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): RewardViewHolder {
@@ -39,22 +35,21 @@ class RewardAdapter(context: Context, rewardList: MutableList<RewardItem>) :
 
         viewHolder.textLabel.text = itemTextData
         viewHolder.ptLabel.text = "+ $itemPts pts"
-//
-//        if (updateAndDelete != null) {
-//            viewHolder.isDone.setOnClickListener {
-//                updateAndDelete.setIsDoneState(UID, !done)
-//            }
-//            viewHolder.isDeleted.setOnClickListener {
-//                updateAndDelete.onItemDelete(UID)
-//            }
-//        }
+
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = rewardList.size
 
     class RewardViewHolder(row: View) : RecyclerView.ViewHolder(row) {
-        val textLabel: TextView = row!!.findViewById(R.id.reward_text) as TextView
+
+        val foreground : RelativeLayout = row!!.findViewById(R.id.foreground) as RelativeLayout
+        val background : RelativeLayout = row!!.findViewById(R.id.background) as RelativeLayout
+
+
+        val textLabel: TextView = row!!.findViewById(R.id.rewardText) as TextView
         val ptLabel: TextView = row!!.findViewById(R.id.pointCost) as TextView
+
+
     }
 }

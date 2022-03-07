@@ -30,6 +30,31 @@
             android:textColor="#fff"
             android:textSize="13dp" />
     </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/backgroundComplete"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/complete">
+
+        <ImageView
+            android:id="@+id/completeIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            app:srcCompat="@drawable/ic_delete_foreground"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@id/completeIcon"
+            android:text="Complete Task"
+            android:textColor="#fff"
+            android:textSize="13dp" />
+    </RelativeLayout>
 
     <RelativeLayout
         android:padding="20dp"
@@ -49,15 +74,15 @@
         android:autoSizeTextType="uniform"
         android:textColor="#000000"
          />
-    <TextView
-        android:id="@+id/pointsGiven"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@id/item_text"
-        android:text="+5 Pts"
-        android:textSize="24sp"
-       />
+
+        <TextView
+            android:id="@+id/pointsGiven"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="+5 Pts"
+            android:textSize="24sp" />
 
     </RelativeLayout>
 

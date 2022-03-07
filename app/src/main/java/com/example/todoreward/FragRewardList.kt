@@ -5,11 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ListView
+import android.widget.RelativeLayout
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -28,7 +30,7 @@ class FragRewardList : Fragment() {
     private val viewModel: RewardItemModel by activityViewModels()
     private var rewardList: MutableList<RewardItem>? = null
     lateinit var adapter: RewardAdapter
-    private lateinit var listViewItem: RecyclerView
+    private lateinit var recyclerView: RecyclerView
     lateinit var mContext: Context
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -53,7 +55,60 @@ class FragRewardList : Fragment() {
         rewardList?.add(rewardItem)
         adapter.notifyDataSetChanged()
     }
+    fun setDeleteVisible(value: Boolean, deleteBG: RelativeLayout, completeBG: RelativeLayout) {
+        deleteBG.isVisible = value
+        completeBG.isVisible = !value
+    }
 
+    private fun setupRecyclerView(view: View) {
+        recyclerView = view.findViewById(R.id.listViewRewards)
+        //for showing items in list view
+        adapter = RewardAdapter(mContext, rewardList!!)
+        recyclerView.adapter = adapter
+
+        //Add spaces to recycler view items
+        var spacingItemDecorator: SpacingItemDecoration = SpacingItemDecoration()
+        recyclerView.addItemDecoration(spacingItemDecorator)
+
+
+        val swipeToDeleteCallback =
+            object : SwipeHelperRewards(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+
+                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+
+                    val pos = viewHolder.adapterPosition
+
+                    //if swipe right, add pts
+                    if (direction == ItemTouchHelper.RIGHT) {
+                        ptAmount -= rewardList!![pos].pointCost
+                        (activity as MainActivity).updatePtTabTitle()//update tab to show point change
+                        toast("Collected Reward '" + rewardList!![pos].rewardName + "'", mContext)
+                    }
+
+                    rewardList!!.removeAt(pos)
+                    adapter.notifyItemRemoved(pos)
+                }
+                //Set what background to show (red delete or green complete) on swipe
+                override fun onStartMovingLeft(viewHolder: RecyclerView.ViewHolder) {
+                    val bgDelete = viewHolder.itemView.findViewById<RelativeLayout>(R.id.background)
+                    val bgComplete =
+                        viewHolder.itemView.findViewById<RelativeLayout>(R.id.backgroundComplete)
+                    setDeleteVisible(true, bgDelete, bgComplete)
+                }
+
+                override fun onStartMovingRight(viewHolder: RecyclerView.ViewHolder) {
+                    val bgDelete = viewHolder.itemView.findViewById<RelativeLayout>(R.id.background)
+                    val bgComplete =
+                        viewHolder.itemView.findViewById<RelativeLayout>(R.id.backgroundComplete)
+                    setDeleteVisible(false, bgDelete, bgComplete)
+                }
+
+            }
+
+        val itemTouchHelper = ItemTouchHelper(swipeToDeleteCallback)
+        itemTouchHelper.attachToRecyclerView(recyclerView)
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,13 +117,8 @@ class FragRewardList : Fragment() {
         rewardList = mutableListOf<RewardItem>()
 
         val view: View = inflater.inflate(R.layout.fragment_frag__reward_list, container, false)
-        listViewItem = view.findViewById(R.id.listViewRewards)
-        //for showing items in list view
-        adapter = RewardAdapter(mContext, rewardList!!)
-        listViewItem.adapter = adapter
 
-        var spacingItemDecorator: SpacingItemDecoration = SpacingItemDecoration()
-        listViewItem.addItemDecoration(spacingItemDecorator)
+        setupRecyclerView(view)
 
         val fab = view.findViewById<FloatingActionButton>(R.id.fabAddReward)
         fab?.setOnClickListener {
