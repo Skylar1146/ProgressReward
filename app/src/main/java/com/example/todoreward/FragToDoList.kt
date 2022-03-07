@@ -1,24 +1,19 @@
 package com.example.todoreward
 
-import SwipeToDeleteCallback
 import android.content.Context
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ListView
-import android.widget.SimpleAdapter
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import androidx.fragment.app.viewModels
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,7 +31,7 @@ class FragToDoList : Fragment() {
     private var param2: String? = null
 
 
-     private var toDoList: MutableList<ToDoItem>? = null
+     private var recyclerView: MutableList<ToDoItem>? = null
      lateinit var adapter: ToDoAdapter
     private lateinit var listViewItem: RecyclerView
 
@@ -82,7 +77,7 @@ class FragToDoList : Fragment() {
 
     public fun addToDoItem(item: ToDoItem)
     {
-        toDoList?.add(item)
+        recyclerView?.add(item)
         adapter.notifyDataSetChanged()
     }
 
@@ -92,21 +87,22 @@ class FragToDoList : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        toDoList = mutableListOf<ToDoItem>()
+        recyclerView = mutableListOf<ToDoItem>()
         val view: View = inflater.inflate(R.layout.fragment_frag__to_do_list, container, false)
         listViewItem = view.findViewById(R.id.listView)
         //for showing items in list view
-        adapter = ToDoAdapter(mContext, toDoList!!)
+        adapter = ToDoAdapter(mContext, recyclerView!!)
         listViewItem.adapter = adapter
 
         var spacingItemDecorator: SpacingItemDecoration = SpacingItemDecoration()
         listViewItem.addItemDecoration(spacingItemDecorator)
 
 
-        val swipeToDeleteCallback = object : SwipeToDeleteCallback() {
+
+        val swipeToDeleteCallback = object : SwipeToDeleteCallback(0,ItemTouchHelper.LEFT) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val pos = viewHolder.adapterPosition
-                toDoList!!.removeAt(pos)
+                recyclerView!!.removeAt(pos)
                 adapter.notifyItemRemoved(pos)
             }
         }

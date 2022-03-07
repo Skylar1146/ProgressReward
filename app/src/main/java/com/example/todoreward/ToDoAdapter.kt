@@ -59,6 +59,11 @@ class ToDoAdapter(context: Context, todolist: MutableList<ToDoItem>) :
     override fun getItemCount() = itemList.size
 
     class ViewHolder(row: View) : RecyclerView.ViewHolder(row) {
+
+        val foreground : RelativeLayout = row!!.findViewById(R.id.foreground) as RelativeLayout
+        val background : RelativeLayout = row!!.findViewById(R.id.background) as RelativeLayout
+
+
         val textLabel: TextView = row!!.findViewById(R.id.item_text) as TextView
         val ptLabel: TextView = row!!.findViewById(R.id.pointsGiven) as TextView
 
