@@ -38,7 +38,7 @@ class DialogAddTodo : DialogFragment() {
         var addBut = view.findViewById<Button>(R.id.butAddTaskDialog)
         addBut.setOnClickListener()
         {
-            val todoItemData = ToDoItem.createToDoItem()
+            val todoItemData = ItemToDo.createToDoItem()
 
             var taskNameText =
                 view.findViewById<TextView>(R.id.editTextRwdName)

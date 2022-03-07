@@ -4,11 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class RewardItem {
+class ItemReward {
 
     companion object Factory
     {
-        fun createRewardItem(): RewardItem = RewardItem()
+        fun createRewardItem(): ItemReward = ItemReward()
     }
 
     var UID: String? = null
@@ -19,12 +19,12 @@ class RewardItem {
 
 class RewardItemModel: ViewModel()
 {
-    private val mutableToDoItem = MutableLiveData<RewardItem>()
-    val selectedItem : LiveData<RewardItem> get() = mutableToDoItem
+    private val mutableToDoItem = MutableLiveData<ItemReward>()
+    val selectedItemReward : LiveData<ItemReward> get() = mutableToDoItem
 
-    fun setItem(todoItem:RewardItem)
+    fun setItem(todoItemReward:ItemReward)
     {
-        mutableToDoItem.value = todoItem
+        mutableToDoItem.value = todoItemReward
     }
 
 }

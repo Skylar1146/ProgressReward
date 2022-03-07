@@ -23,17 +23,17 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [FragToDoList.newInstance] factory method to
+ * Use the [ListTodoFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FragToDoList : Fragment() {
+class ListTodoFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
 
-    private var todoItems: MutableList<ToDoItem>? = null
-    lateinit var adapter: ToDoAdapter
+    private var todoItemToDos: MutableList<ItemToDo>? = null
+    lateinit var adapterToDo: AdapterToDo
     private lateinit var recyclerView: RecyclerView
 
 
@@ -59,7 +59,7 @@ class FragToDoList : Fragment() {
         )
         val ptRewards = arrayOf(1, 2, 1, 2, 4, 6,2,2,1)
         for (i in todoItems.indices) {
-            var newTodoItem = ToDoItem.createToDoItem()
+            var newTodoItem = ItemToDo.createToDoItem()
             newTodoItem.itemDataText = todoItems[i]
             newTodoItem.UID = i.toString()
             newTodoItem.points = ptRewards[i]
@@ -77,16 +77,16 @@ class FragToDoList : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-        viewModel.selectedItem.observe(this, Observer { item ->
+        viewModel.selectedItemToDo.observe(this, Observer { item ->
             // Perform an action with the latest item data
             addToDoItem(item)
         })
 
     }
 
-    fun addToDoItem(item: ToDoItem) {
-        todoItems?.add(item)
-        adapter.notifyDataSetChanged()
+    fun addToDoItem(itemToDo: ItemToDo) {
+        todoItemToDos?.add(itemToDo)
+        adapterToDo.notifyDataSetChanged()
     }
 
 
@@ -99,8 +99,8 @@ class FragToDoList : Fragment() {
     private fun setupRecyclerView(view: View) {
         recyclerView = view.findViewById(R.id.listView)
         //for showing items in list view
-        adapter = ToDoAdapter(mContext, todoItems!!)
-        recyclerView.adapter = adapter
+        adapterToDo = AdapterToDo(mContext, todoItemToDos!!)
+        recyclerView.adapter = adapterToDo
 
         //Add spaces to recycler view items
         var spacingItemDecorator: SpacingItemDecoration = SpacingItemDecoration()
@@ -108,7 +108,7 @@ class FragToDoList : Fragment() {
 
 
         val swipeToDeleteCallback =
-            object : SwipeToDeleteCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+            object : SwipeHelperToDo(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
 
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
 
@@ -116,13 +116,13 @@ class FragToDoList : Fragment() {
 
                     //if swipe right, add pts
                     if (direction == ItemTouchHelper.RIGHT) {
-                        ptAmount += todoItems!![pos].points
+                        ptAmount += todoItemToDos!![pos].points
                         (activity as MainActivity).updatePtTabTitle()//update tab to show point change
-                        toast("Completed task '" + todoItems!![pos].itemDataText + "'", mContext)
+                        toast("Completed task '" + todoItemToDos!![pos].itemDataText + "'", mContext)
                     }
 
-                    todoItems!!.removeAt(pos)
-                    adapter.notifyItemRemoved(pos)
+                    todoItemToDos!!.removeAt(pos)
+                    adapterToDo.notifyItemRemoved(pos)
                 }
                 //Set what background to show (red delete or green complete) on swipe
                 override fun onStartMovingLeft(viewHolder: RecyclerView.ViewHolder) {
@@ -151,7 +151,7 @@ class FragToDoList : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        todoItems = mutableListOf<ToDoItem>()
+        todoItemToDos = mutableListOf<ItemToDo>()
         val view: View = inflater.inflate(R.layout.fragment_frag__to_do_list, container, false)
 
         setupRecyclerView(view)
@@ -185,7 +185,7 @@ class FragToDoList : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            FragToDoList().apply {
+            ListTodoFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

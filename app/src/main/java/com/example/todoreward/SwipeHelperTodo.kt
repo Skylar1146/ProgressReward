@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 
 
-abstract class SwipeToDeleteCallback(
+abstract class SwipeHelperToDo(
     dragDirs: Int,
     swipeDirs: Int
 ) : ItemTouchHelper.SimpleCallback(dragDirs, swipeDirs) {
@@ -22,7 +22,7 @@ abstract class SwipeToDeleteCallback(
 
     override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {
         if (viewHolder != null) {
-            val foregroundView: View = (viewHolder as ToDoAdapter.ViewHolder).foreground
+            val foregroundView: View = (viewHolder as AdapterToDo.ViewHolder).foreground
             getDefaultUIUtil().onSelected(foregroundView)
         }
     }
@@ -36,7 +36,7 @@ abstract class SwipeToDeleteCallback(
         actionState: Int,
         isCurrentlyActive: Boolean
     ) {
-        val foregroundView: View = (viewHolder as ToDoAdapter.ViewHolder).foreground
+        val foregroundView: View = (viewHolder as AdapterToDo.ViewHolder).foreground
         getDefaultUIUtil().onDrawOver(
             c, recyclerView, foregroundView, dX, dY,
             actionState, isCurrentlyActive
@@ -44,7 +44,7 @@ abstract class SwipeToDeleteCallback(
     }
 
     override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder) {
-        val foregroundView: View = (viewHolder as ToDoAdapter.ViewHolder).foreground
+        val foregroundView: View = (viewHolder as AdapterToDo.ViewHolder).foreground
         getDefaultUIUtil().clearView(foregroundView)
     }
 
@@ -57,7 +57,7 @@ abstract class SwipeToDeleteCallback(
         actionState: Int,
         isCurrentlyActive: Boolean
     ) {
-        val foregroundView: View = (viewHolder as ToDoAdapter.ViewHolder).foreground
+        val foregroundView: View = (viewHolder as AdapterToDo.ViewHolder).foreground
         getDefaultUIUtil().onDraw(
             c, recyclerView, foregroundView, dX, dY,
             actionState, isCurrentlyActive

@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 
-class RewardAdapter(context: Context, rewardList: MutableList<RewardItem>) :
-    RecyclerView.Adapter<RewardAdapter.RewardViewHolder>() {
+class AdapterReward(context: Context, listReward: MutableList<ItemReward>) :
+    RecyclerView.Adapter<AdapterReward.RewardViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
-    private var rewardList = rewardList
+    private var rewardList = listReward
 
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): RewardViewHolder {

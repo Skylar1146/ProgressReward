@@ -8,11 +8,11 @@ import androidx.lifecycle.ViewModel
     Simple class to hold data for a to-do list
 
  */
-class ToDoItem  {
+class ItemToDo  {
 
     companion object Factory
     {
-        fun createToDoItem(): ToDoItem = ToDoItem()
+        fun createToDoItem(): ItemToDo = ItemToDo()
     }
 
     var UID: String? = null
@@ -24,12 +24,12 @@ class ToDoItem  {
 
 class TodoItemModel: ViewModel()
 {
-    private val mutableToDoItem = MutableLiveData<ToDoItem>()
-    val selectedItem : LiveData<ToDoItem> get() = mutableToDoItem
+    private val mutableToDoItem = MutableLiveData<ItemToDo>()
+    val selectedItemToDo : LiveData<ItemToDo> get() = mutableToDoItem
 
-    fun setItem(todoItem:ToDoItem)
+    fun setItem(todoItemToDo:ItemToDo)
     {
-        mutableToDoItem.value = todoItem
+        mutableToDoItem.value = todoItemToDo
     }
 
 }

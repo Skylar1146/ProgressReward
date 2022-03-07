@@ -14,8 +14,8 @@ const val ROWS_IN_LIST: Int = 7
 /*
 In charge of taking the list of to do items and applying them to the list view
  */
-class ToDoAdapter(context: Context, todolist: MutableList<ToDoItem>) :
-    RecyclerView.Adapter<ToDoAdapter.ViewHolder>() {
+class AdapterToDo(context: Context, todolist: MutableList<ItemToDo>) :
+    RecyclerView.Adapter<AdapterToDo.ViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var itemList = todolist

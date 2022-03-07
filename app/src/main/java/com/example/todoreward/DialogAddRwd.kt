@@ -8,11 +8,6 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
-import com.example.todoreward.getRandomString
-import androidx.fragment.app.activityViewModels
-import com.example.todoreward.R
-import com.example.todoreward.RewardItem
-import com.example.todoreward.RewardItemModel
 
 class DialogAddRwd : DialogFragment() {
 
@@ -33,7 +28,7 @@ class DialogAddRwd : DialogFragment() {
         var addBut = view.findViewById<Button>(R.id.butAddReward)
         addBut.setOnClickListener()
         {
-            val rewardItemData = RewardItem.createRewardItem()
+            val rewardItemData = ItemReward.createRewardItem()
 
             var taskNameText =
                 view.findViewById<TextView>(R.id.dlgTextRewardName)

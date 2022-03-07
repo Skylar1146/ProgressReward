@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.example.todoreward.FragRewardList
-import com.example.todoreward.FragToDoList
+import com.example.todoreward.ListRewardFragment
+import com.example.todoreward.ListTodoFragment
 import com.example.todoreward.R
 import com.example.todoreward.ptAmount
 
@@ -27,9 +27,9 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
     override fun getItem(position: Int): Fragment {
         // getItem is called to instantiate the fragment for the given page.
         return if (position == 0)
-             FragToDoList.newInstance("", "")
+             ListTodoFragment.newInstance("", "")
          else
-             FragRewardList.newInstance("", "")
+             ListRewardFragment.newInstance("", "")
         //todo: point page
     }
 

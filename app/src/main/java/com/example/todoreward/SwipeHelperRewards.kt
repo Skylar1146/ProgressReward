@@ -21,7 +21,7 @@ abstract class SwipeHelperRewards(
 
     override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {
         if (viewHolder != null) {
-            val foregroundView: View = (viewHolder as RewardAdapter.RewardViewHolder).foreground
+            val foregroundView: View = (viewHolder as AdapterReward.RewardViewHolder).foreground
             getDefaultUIUtil().onSelected(foregroundView)
         }
     }
@@ -35,7 +35,7 @@ abstract class SwipeHelperRewards(
         actionState: Int,
         isCurrentlyActive: Boolean
     ) {
-        val foregroundView: View = (viewHolder as RewardAdapter.RewardViewHolder).foreground
+        val foregroundView: View = (viewHolder as AdapterReward.RewardViewHolder).foreground
         getDefaultUIUtil().onDrawOver(
             c, recyclerView, foregroundView, dX, dY,
             actionState, isCurrentlyActive
@@ -43,7 +43,7 @@ abstract class SwipeHelperRewards(
     }
 
     override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder) {
-        val foregroundView: View = (viewHolder as RewardAdapter.RewardViewHolder).foreground
+        val foregroundView: View = (viewHolder as AdapterReward.RewardViewHolder).foreground
         getDefaultUIUtil().clearView(foregroundView)
     }
 
@@ -56,7 +56,7 @@ abstract class SwipeHelperRewards(
         actionState: Int,
         isCurrentlyActive: Boolean
     ) {
-        val foregroundView: View = (viewHolder as RewardAdapter.RewardViewHolder).foreground
+        val foregroundView: View = (viewHolder as AdapterReward.RewardViewHolder).foreground
         getDefaultUIUtil().onDraw(
             c, recyclerView, foregroundView, dX, dY,
             actionState, isCurrentlyActive

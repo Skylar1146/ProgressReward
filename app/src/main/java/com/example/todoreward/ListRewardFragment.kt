@@ -22,14 +22,14 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 
-class FragRewardList : Fragment() {
+class ListRewardFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
     private val viewModel: RewardItemModel by activityViewModels()
-    private var rewardList: MutableList<RewardItem>? = null
-    lateinit var adapter: RewardAdapter
+    private var listReward: MutableList<ItemReward>? = null
+    lateinit var adapterReward: AdapterReward
     private lateinit var recyclerView: RecyclerView
     lateinit var mContext: Context
     override fun onAttach(context: Context) {
@@ -44,16 +44,16 @@ class FragRewardList : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
 
-        viewModel.selectedItem.observe(this, Observer { item ->
+        viewModel.selectedItemReward.observe(this, Observer { item ->
             // Perform an action with the latest item data
             addReward(item)
         })
     }
 
-    fun addReward(rewardItem: RewardItem)
+    fun addReward(itemReward: ItemReward)
     {
-        rewardList?.add(rewardItem)
-        adapter.notifyDataSetChanged()
+        listReward?.add(itemReward)
+        adapterReward.notifyDataSetChanged()
     }
     fun setDeleteVisible(value: Boolean, deleteBG: RelativeLayout, completeBG: RelativeLayout) {
         deleteBG.isVisible = value
@@ -63,8 +63,8 @@ class FragRewardList : Fragment() {
     private fun setupRecyclerView(view: View) {
         recyclerView = view.findViewById(R.id.listViewRewards)
         //for showing items in list view
-        adapter = RewardAdapter(mContext, rewardList!!)
-        recyclerView.adapter = adapter
+        adapterReward = AdapterReward(mContext, listReward!!)
+        recyclerView.adapter = adapterReward
 
         //Add spaces to recycler view items
         var spacingItemDecorator: SpacingItemDecoration = SpacingItemDecoration()
@@ -78,15 +78,20 @@ class FragRewardList : Fragment() {
 
                     val pos = viewHolder.adapterPosition
 
-                    //if swipe right, add pts
+                    var delete: Boolean = true
+                    //if swipe right, collect reward
                     if (direction == ItemTouchHelper.RIGHT) {
-                        ptAmount -= rewardList!![pos].pointCost
+
+                        var rewardItem: ItemReward = listReward!![pos]
+                      //  if(ptAmount)
+
+                        ptAmount -= listReward!![pos].pointCost
                         (activity as MainActivity).updatePtTabTitle()//update tab to show point change
-                        toast("Collected Reward '" + rewardList!![pos].rewardName + "'", mContext)
+                        toast("Collected Reward '" + listReward!![pos].rewardName + "'", mContext)
                     }
 
-                    rewardList!!.removeAt(pos)
-                    adapter.notifyItemRemoved(pos)
+                    listReward!!.removeAt(pos)
+                    adapterReward.notifyItemRemoved(pos)
                 }
                 //Set what background to show (red delete or green complete) on swipe
                 override fun onStartMovingLeft(viewHolder: RecyclerView.ViewHolder) {
@@ -114,7 +119,7 @@ class FragRewardList : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        rewardList = mutableListOf<RewardItem>()
+        listReward = mutableListOf<ItemReward>()
 
         val view: View = inflater.inflate(R.layout.fragment_frag__reward_list, container, false)
 
@@ -136,7 +141,7 @@ class FragRewardList : Fragment() {
         val ptRewards = arrayOf(2,2,3,4,3,1,1,1,4)
         for (i in rewards.indices)
         {
-            var newRwd = RewardItem.createRewardItem()
+            var newRwd = ItemReward.createRewardItem()
             newRwd.rewardName = rewards[i]
             newRwd.UID = i.toString()
             newRwd.pointCost = ptRewards[i]
@@ -164,7 +169,7 @@ class FragRewardList : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            FragRewardList().apply {
+            ListRewardFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
