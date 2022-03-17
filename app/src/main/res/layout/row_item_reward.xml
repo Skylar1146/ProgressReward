@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -56,8 +57,8 @@
             android:textSize="13dp" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:padding="20dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="8dp"
         android:id="@+id/foreground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -65,22 +66,37 @@
 
         <TextView
             android:id="@+id/rewardText"
-            android:layout_width="250sp"
+            android:layout_width="200sp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
 
             android:text="Text"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="1hr 5m"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pointCost" />
 
         <TextView
             android:id="@+id/pointCost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
+            android:textColor="#000000"
             android:text="+5 Pts"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

@@ -34,9 +34,9 @@ class MainActivity : AppCompatActivity() {
     fun updatePtTabTitle()
     {
         val tabLayout = binding.tabs
-        val tab = tabLayout.getTabAt(3)
+        val tab = tabLayout.getTabAt(2)
         if (tab != null) {
-            tab.text = resources.getString(TAB_TITLES[3]) + ptAmount.toString();
+            tab.text = resources.getString(TAB_TITLES[2]) + ptAmount.toString();
         }
 
     }
@@ -55,11 +55,7 @@ class MainActivity : AppCompatActivity() {
         val tabs: TabLayout = binding.tabs
         tabs.setupWithViewPager(viewPager)
 
-
-
-
         setSupportActionBar(findViewById(R.id.toolbar))
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

@@ -8,11 +8,27 @@ class ItemReward {
 
     companion object Factory {
         fun createRewardItem(): ItemReward = ItemReward()
+        fun createRewardItem(name:String,ptCost:Int,hrs:Int,mins:Int) : ItemReward
+        {
+            var reward = ItemReward()
+            reward.UID = getRandomString(6)
+            reward.rewardName = name
+            reward.pointCost = ptCost
+            reward.hours = hrs
+            reward.minutes = mins
+            return reward
+        }
+
+
     }
 
     var UID: String? = null
     var rewardName: String? = null
     var pointCost: Int = 0
+    var hours: Int = 0
+    var minutes: Int = 0
+    var repeatable: Boolean = false
+
 
     fun canAfford(): Boolean {
         return ptAmount >= pointCost

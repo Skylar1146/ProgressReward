@@ -10,7 +10,7 @@ import com.example.todoreward.R
 import com.example.todoreward.ptAmount
 
 val TAB_TITLES = arrayOf(
-   R.string.tabTodo,
+    R.string.tabTodo,
     R.string.tabRewards,
     R.string.lblPoints
 )
@@ -27,9 +27,9 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
     override fun getItem(position: Int): Fragment {
         // getItem is called to instantiate the fragment for the given page.
         return if (position == 0)
-             ListTodoFragment.newInstance("", "")
-         else
-             ListRewardFragment.newInstance("", "")
+            ListTodoFragment.newInstance("", "")
+        else
+            ListRewardFragment.newInstance("", "")
         //todo: point page
     }
 

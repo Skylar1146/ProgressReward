@@ -50,14 +50,37 @@ class ListRewardFragment : Fragment() {
         })
     }
 
-    fun addReward(itemReward: ItemReward)
-    {
+    private fun addReward(itemReward: ItemReward) {
         listReward?.add(itemReward)
         adapterReward.notifyDataSetChanged()
     }
+
     fun setDeleteVisible(value: Boolean, deleteBG: RelativeLayout, completeBG: RelativeLayout) {
         deleteBG.isVisible = value
         completeBG.isVisible = !value
+    }
+
+
+    private fun collectReward(rewardItem: ItemReward, pos: Int) {
+        ptAmount -= rewardItem.pointCost
+        (activity as MainActivity).updatePtTabTitle()//update tab to show point change
+
+        if(rewardItem.hours > 0 || rewardItem.minutes > 0)        //If has time start timer
+        {
+            var timerDialog = DialogRewardTimer.newInstance(
+                rewardItem.hours.toLong(),
+                rewardItem.minutes.toLong()
+            )
+            timerDialog.isCancelable = false//Must click stop to exit timer dialog
+            timerDialog.show(childFragmentManager, DialogAddRwd.TAG)
+        }
+        if (!rewardItem.repeatable) {
+            listReward!!.removeAt(pos)
+            adapterReward.notifyItemRemoved(pos)
+        }
+
+
+        toast("Collected Reward '" + rewardItem.rewardName + "'", mContext)
     }
 
     private fun setupRecyclerView(view: View) {
@@ -81,15 +104,10 @@ class ListRewardFragment : Fragment() {
                     if (direction == ItemTouchHelper.RIGHT) {
 
                         var rewardItem: ItemReward = listReward!![pos]
-                        if(rewardItem.canAfford())//Collect task
+                        if (rewardItem.canAfford())//Collect task
                         {
-                            ptAmount -= rewardItem.pointCost
-                            (activity as MainActivity).updatePtTabTitle()//update tab to show point change
-                            toast("Collected Reward '" + rewardItem.rewardName + "'", mContext)
-                            listReward!!.removeAt(pos)
-                            adapterReward.notifyItemRemoved(pos)
-                        }
-                        else {
+                            collectReward(rewardItem, pos)
+                        } else {
                             toast(
                                 "You need ${rewardItem.pointCost - ptAmount} more points for this reward",
                                 mContext
@@ -97,12 +115,12 @@ class ListRewardFragment : Fragment() {
                             //Calling this will undo swipe
                             adapterReward.notifyItemChanged(pos)
                         }
-                    }
-                    else {//Delete
+                    } else {//Delete
                         listReward!!.removeAt(pos)
                         adapterReward.notifyItemRemoved(pos)
                     }
                 }
+
                 //Set what background to show (red delete or green complete) on swipe
                 override fun onStartMovingLeft(viewHolder: RecyclerView.ViewHolder) {
                     val bgDelete = viewHolder.itemView.findViewById<RelativeLayout>(R.id.background)
@@ -146,22 +164,26 @@ class ListRewardFragment : Fragment() {
         return view
     }
 
-    private fun populateRewardListExamples()
-    {
-        val rewards = arrayOf("Watch a movie",  "Play video games - 30 mins","Play video games - 1 hr","Play Video games - 2 hrs","Get fast food", "Have a drink","Watch youtube - 30 mins", "Social Media - 30 mins", "Go Bowling",)
-        val ptRewards = arrayOf(2,2,3,4,3,1,1,1,4)
-        for (i in rewards.indices)
-        {
-            var newRwd = ItemReward.createRewardItem()
-            newRwd.rewardName = rewards[i]
-            newRwd.UID = i.toString()
-            newRwd.pointCost = ptRewards[i]
+    private fun populateRewardListExamples() {
+        val rewards = arrayOf(
+            ItemReward.createRewardItem("Watch TV", 2, 0, 30),
+            ItemReward.createRewardItem("Watch TV", 3, 1, 1),
+            ItemReward.createRewardItem("Play Video Games", 2, 1, 20),
+            ItemReward.createRewardItem("Go Bowling", 4, 0, 0),
+            ItemReward.createRewardItem("Get Fast Food", 3, 0, 0),
+            ItemReward.createRewardItem("Browse Social Media", 1, 0, 30),
+            ItemReward.createRewardItem("Watch a movie", 3, 0, 0),
+            ItemReward.createRewardItem("Buy new clothing item", 6, 0, 0),
+            ItemReward.createRewardItem("Go out for drinks", 5, 0, 0),
 
-            addReward(newRwd)
+            )
+        for (i in rewards) {
+            addReward(i)
         }
 
 
     }
+
 
     private fun showAddRewardDialog(childFragmentManager: FragmentManager) {
         var dialog = DialogAddRwd()
