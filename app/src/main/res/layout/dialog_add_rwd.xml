@@ -77,9 +77,10 @@
     <NumberPicker
         android:id="@+id/hourPicker"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="48dp"
         android:layout_marginTop="36dp"
-        android:layout_height="wrap_content"
+        android:soundEffectsEnabled="true"
         app:layout_constraintStart_toEndOf="@+id/lblRwdDuration"
         app:layout_constraintTop_toBottomOf="@+id/dlgTextRewardCost" />
 
@@ -96,21 +97,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
+        android:layout_marginTop="16dp"
         android:backgroundTint="@color/rwdOrange"
         android:text="Add"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
-
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="16dp"
-        android:text="Repeatable"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hourPicker" />
+        app:layout_constraintTop_toBottomOf="@+id/minutePicker" />
 
 
     <TextView

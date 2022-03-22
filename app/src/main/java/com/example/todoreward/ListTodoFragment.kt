@@ -13,6 +13,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.example.todoreward.ui.main.RecyclerItemClickListener
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
@@ -57,7 +58,7 @@ class ListTodoFragment : Fragment() {
             "Do Laundry",
             "Do the dishes"
         )
-        val ptRewards = arrayOf(1, 2, 1, 2, 4, 6,2,2,1)
+        val ptRewards = arrayOf(1, 2, 1, 2, 4, 6, 2, 2, 1)
         for (i in todoItems.indices) {
             var newTodoItem = ItemToDo.createToDoItem()
             newTodoItem.itemDataText = todoItems[i]
@@ -82,8 +83,23 @@ class ListTodoFragment : Fragment() {
 
     }
 
+
     private fun addToDoItem(itemToDo: ItemToDo) {
-        todoItemToDos?.add(itemToDo)
+        //find if existing
+        var existingIndex: Int = -1
+        for (i in todoItemToDos?.indices!!) {
+            if (todoItemToDos!![i].UID == itemToDo.UID) {
+                existingIndex = i
+                break
+            }
+        }
+        //replace existing
+        if (existingIndex >= 0) {
+            todoItemToDos!![existingIndex] = itemToDo
+
+        } else
+
+            todoItemToDos?.add(itemToDo)
         adapterToDo.notifyDataSetChanged()
     }
 
@@ -116,12 +132,16 @@ class ListTodoFragment : Fragment() {
                     if (direction == ItemTouchHelper.RIGHT) {
                         ptAmount += todoItemToDos!![pos].points
                         (activity as MainActivity).updatePtTabTitle()//update tab to show point change
-                        toast("Completed task '" + todoItemToDos!![pos].itemDataText + "'", mContext)
+                        toast(
+                            "Completed task '" + todoItemToDos!![pos].itemDataText + "'",
+                            mContext
+                        )
                     }
 
                     todoItemToDos!!.removeAt(pos)
                     adapterToDo.notifyItemRemoved(pos)
                 }
+
                 //Set what background to show (red delete or green complete) on swipe
                 override fun onStartMovingLeft(viewHolder: RecyclerView.ViewHolder) {
                     val bgDelete = viewHolder.itemView.findViewById<RelativeLayout>(R.id.background)
@@ -142,6 +162,36 @@ class ListTodoFragment : Fragment() {
         val itemTouchHelper = ItemTouchHelper(swipeToDeleteCallback)
         itemTouchHelper.attachToRecyclerView(recyclerView)
 
+
+        recyclerView.addOnItemTouchListener(
+            RecyclerItemClickListener(
+                context,
+                recyclerView,
+                object : RecyclerItemClickListener.OnItemClickListener {
+                    override fun onItemClick(view: View?, position: Int) {
+                        // do whatever
+                    }
+
+                    override fun onLongItemClick(view: View?, position: Int) {
+                        val item: ItemToDo = todoItemToDos!![position]
+
+                        var dialog = DialogAddTodo()
+                        var args: Bundle = Bundle()
+                        args.putIntArray(
+                            dialog.ARG_DATE_ARRAY,
+                            intArrayOf(item.year, item.month, item.day)
+                        )
+                        args.putString(dialog.ARG_TASK_NAME, item.itemDataText)
+                        args.putInt(dialog.ARG_PTS_NAME, item.points)
+                        args.putString(dialog.ARG_UID, item.UID)
+
+                        dialog.arguments = args
+
+                        dialog.show(childFragmentManager, DialogAddTodo.TAG)
+                    }
+                })
+        )
+
     }
 
 
@@ -156,18 +206,14 @@ class ListTodoFragment : Fragment() {
 
         val fab = view.findViewById<FloatingActionButton>(R.id.fabAddTask)
         fab?.setOnClickListener {
-            showAddTaskDialog(childFragmentManager)
+            var dialog = DialogAddTodo()
+            dialog.show(childFragmentManager, DialogAddTodo.TAG)
         }
 
         populateTodoListExamples()
 
         // Inflate the layout for this fragment
         return view
-    }
-
-    private fun showAddTaskDialog(childFragmentManager: FragmentManager) {
-        var dialog = DialogAddTodo()
-        dialog.show(childFragmentManager, DialogAddTodo.TAG)
     }
 
 

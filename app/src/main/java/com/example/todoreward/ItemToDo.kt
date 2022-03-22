@@ -19,6 +19,9 @@ class ItemToDo  {
     var itemDataText: String? = null
     var points: Int = 0
     var done: Boolean? = false
+    var year: Int = 0
+    var month: Int = 0
+    var day: Int = 0
 
 }
 

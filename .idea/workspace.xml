@@ -60,8 +60,8 @@
         <option value="valueResourceFile" />
         <option value="resourceFile" />
         <option value="JUnit4 Test Class" />
-        <option value="Kotlin Class" />
         <option value="layoutResourceFile" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>

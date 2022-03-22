@@ -36,13 +36,14 @@
         android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/editTextDate"
         app:layout_constraintStart_toEndOf="@+id/lblPtCost"
-        app:layout_constraintStart_toStartOf="@+id/editTextRwdName"
-        app:layout_constraintTop_toBottomOf="@+id/editTextRwdName" />
+        app:layout_constraintStart_toStartOf="@+id/editTaskName"
+        app:layout_constraintTop_toBottomOf="@+id/editTaskName" />
 
     <EditText
-        android:id="@+id/editTextRwdName"
+        android:id="@+id/editTaskName"
         android:layout_width="164dp"
         android:layout_height="40dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
@@ -61,7 +62,7 @@
         android:layout_marginTop="24dp"
         android:text="@string/lblPoints"
         app:layout_constraintStart_toStartOf="@+id/lblRewardName"
-        app:layout_constraintTop_toBottomOf="@+id/editTextRwdName" />
+        app:layout_constraintTop_toBottomOf="@+id/editTaskName" />
 
     <TextView
         android:id="@+id/lblRewardName"
@@ -70,7 +71,7 @@
         android:layout_marginTop="44dp"
         android:layout_marginEnd="8dp"
         android:text="@string/lblTaskName"
-        app:layout_constraintEnd_toStartOf="@+id/editTextRwdName"
+        app:layout_constraintEnd_toStartOf="@+id/editTaskName"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -80,6 +81,7 @@
         android:layout_width="164dp"
         android:layout_height="40dp"
         android:layout_marginTop="8dp"
+        android:focusable="false"
         android:ems="10"
         android:inputType="date"
         app:layout_constraintBottom_toTopOf="@+id/butAddTaskDialog"
