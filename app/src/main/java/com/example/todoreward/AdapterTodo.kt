@@ -1,7 +1,6 @@
 package com.example.todoreward
 
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,7 +35,7 @@ class AdapterToDo(todolist: MutableList<ItemToDo>) :
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         val UID: String = itemList[position].UID as String
-        val itemTextData = itemList[position].itemDataText as String
+        val itemTextData = itemList[position].taskName as String
         val itemPts = itemList[position].points
 
         viewHolder.textLabel.text = itemTextData

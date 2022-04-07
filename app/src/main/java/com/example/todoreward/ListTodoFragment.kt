@@ -61,7 +61,7 @@ class ListTodoFragment : Fragment() {
         val ptRewards = arrayOf(1, 2, 1, 2, 4, 6, 2, 2, 1)
         for (i in todoItems.indices) {
             var newTodoItem = ItemToDo.createToDoItem()
-            newTodoItem.itemDataText = todoItems[i]
+            newTodoItem.taskName = todoItems[i]
             newTodoItem.UID = i.toString()
             newTodoItem.points = ptRewards[i]
 
@@ -107,7 +107,7 @@ class ListTodoFragment : Fragment() {
         val delayInSeconds = (userSelectedDateTime.timeInMillis/1000L) - (todayDateTime.timeInMillis/1000L)
 
 
-        scheduleNotification(mContext, "${itemToDo.itemDataText.toString()}", delayInSeconds)
+        scheduleNotification(mContext, "${itemToDo.taskName.toString()}", delayInSeconds)
         adapterToDo.notifyDataSetChanged()
     }
 
@@ -141,7 +141,7 @@ class ListTodoFragment : Fragment() {
                         ptAmount += todoItemToDos!![pos].points
                         (activity as MainActivity).updatePtTabTitle()//update tab to show point change
                         toast(
-                            "Completed task '" + todoItemToDos!![pos].itemDataText + "'",
+                            "Completed task '" + todoItemToDos!![pos].taskName + "'",
                             mContext
                         )
                     }
@@ -189,7 +189,7 @@ class ListTodoFragment : Fragment() {
                             dialog.ARG_DATE_ARRAY,
                             intArrayOf(item.year, item.month, item.day)
                         )
-                        args.putString(dialog.ARG_TASK_NAME, item.itemDataText)
+                        args.putString(dialog.ARG_TASK_NAME, item.taskName)
                         args.putInt(dialog.ARG_PTS_NAME, item.points)
                         args.putString(dialog.ARG_UID, item.UID)
 

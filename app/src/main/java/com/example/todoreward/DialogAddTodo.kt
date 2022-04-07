@@ -67,33 +67,40 @@ class DialogAddTodo : DialogFragment(), DatePickerDialog.OnDateSetListener {
             if (args.containsKey(ARG_TASK_NAME)) {
                 taskNameText.text = args.getString(ARG_TASK_NAME).toString()
             }
-            if(args.containsKey(ARG_PTS_NAME))
-                ptText.setText( args.getInt(ARG_PTS_NAME).toString())
+            if (args.containsKey(ARG_PTS_NAME))
+                ptText.setText(args.getInt(ARG_PTS_NAME).toString())
         }
         addBut.setOnClickListener()
         {
-
-            val todoItemData = ItemToDo.createToDoItem()
-
-            todoItemData.itemDataText = taskNameText.text.toString()
+            val taskName = taskNameText.text.toString()
+            var pts = 0
 
             try {
-                todoItemData.points = ptText.text.toString().toInt()
-            }
-            catch (nfe: NumberFormatException)
-            {
-                todoItemData.points = 0
+                pts = ptText.text.toString().toInt()
+            } catch (nfe: NumberFormatException) {
+
             }
 
+            if (!ItemToDo.nameIsValid(taskName)) {
+                toast("Task name is not valid!", mContext)
 
-            todoItemData.done = false
+            } else if (!ItemToDo.pointValueIsValid(pts)) {
+                toast("Point value of task is not valid!", mContext)
+            } else {
+                val todoItemData = ItemToDo.createToDoItem()
+                todoItemData.points = pts
+                todoItemData.taskName = taskName
+
+                //todo: grab date
+                todoItemData.done = false
 
 
-            todoItemData.UID = uID
+                todoItemData.UID = uID
 
-            //Set viewmodel to this, to be grabbed by FragToDoList
-            viewModel.setItem(todoItemData)
-            this.dismiss()
+                //Set viewmodel to this, to be grabbed by FragToDoList
+                viewModel.setItem(todoItemData)
+                this.dismiss()
+            }
         }
 
         dateText.setOnClickListener()
@@ -126,7 +133,7 @@ class DialogAddTodo : DialogFragment(), DatePickerDialog.OnDateSetListener {
     }
 
     private fun setDateText(year: Int, month: Int, day: Int) {
-        if (dateText != null )
+        if (dateText != null)
             dateText.setText("$month/$day/$year")
 
     }

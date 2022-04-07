@@ -3,6 +3,7 @@ package com.example.todoreward
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import java.time.LocalDateTime
 import java.util.*
 
 /*
@@ -14,10 +15,24 @@ class ItemToDo  {
     companion object Factory
     {
         fun createToDoItem(): ItemToDo = ItemToDo()
+        fun nameIsValid(todoItemName:String) : Boolean
+        {
+            return (todoItemName.isNotEmpty() && todoItemName.length > 2)
+        }
+        fun pointValueIsValid(points:Int):Boolean
+        {
+            return points in 1..100;
+        }
+        fun dateIsValid(date:Calendar):Boolean
+        {
+            return date.after(Calendar.getInstance())//not older than the current time
+        }
+
+
     }
 
     var UID: String? = null
-    var itemDataText: String? = null
+    var taskName: String? = null
     var points: Int = 0
     var done: Boolean? = false
     var year: Int = 0
@@ -29,10 +44,18 @@ class ItemToDo  {
     fun GetDate() : Calendar
     {
         val userSelectedDateTime =Calendar.getInstance()
-        userSelectedDateTime.set(year, month, day, hour , min)
+        userSelectedDateTime.set(Calendar.YEAR,year)
+        userSelectedDateTime.set(Calendar.MONTH,month)
+        userSelectedDateTime.set(Calendar.DAY_OF_MONTH,day)
+        userSelectedDateTime.set(Calendar.HOUR,hour)
+        userSelectedDateTime.set(Calendar.MINUTE,min)
+
+
 
         return userSelectedDateTime
     }
+
+
 
 }
 
