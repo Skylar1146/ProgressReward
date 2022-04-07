@@ -8,13 +8,13 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todoreward.ui.main.RecyclerItemClickListener
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.util.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -98,8 +98,16 @@ class ListTodoFragment : Fragment() {
             todoItemToDos!![existingIndex] = itemToDo
 
         } else
-
             todoItemToDos?.add(itemToDo)
+
+
+        //schedule notification
+        val userSelectedDateTime =itemToDo.GetDate()
+        val todayDateTime = Calendar.getInstance()
+        val delayInSeconds = (userSelectedDateTime.timeInMillis/1000L) - (todayDateTime.timeInMillis/1000L)
+
+
+        scheduleNotification(mContext, "${itemToDo.itemDataText.toString()}", delayInSeconds)
         adapterToDo.notifyDataSetChanged()
     }
 
@@ -203,6 +211,7 @@ class ListTodoFragment : Fragment() {
         val view: View = inflater.inflate(R.layout.fragment_frag__to_do_list, container, false)
 
         setupRecyclerView(view)
+
 
         val fab = view.findViewById<FloatingActionButton>(R.id.fabAddTask)
         fab?.setOnClickListener {

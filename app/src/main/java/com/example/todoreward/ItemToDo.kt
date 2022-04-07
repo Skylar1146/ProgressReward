@@ -3,6 +3,7 @@ package com.example.todoreward
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import java.util.*
 
 /*
     Simple class to hold data for a to-do list
@@ -22,6 +23,16 @@ class ItemToDo  {
     var year: Int = 0
     var month: Int = 0
     var day: Int = 0
+    var hour: Int = 0//todo: set
+    var min: Int = 0
+
+    fun GetDate() : Calendar
+    {
+        val userSelectedDateTime =Calendar.getInstance()
+        userSelectedDateTime.set(year, month, day, hour , min)
+
+        return userSelectedDateTime
+    }
 
 }
 

@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         val tabLayout = binding.tabs
         val tab = tabLayout.getTabAt(2)
         if (tab != null) {
-            tab.text = resources.getString(TAB_TITLES[2]) + ptAmount.toString();
+            tab.text = resources.getString(TAB_TITLES[2]) + ptAmount.toString()
         }
 
     }
@@ -56,6 +56,8 @@ class MainActivity : AppCompatActivity() {
         tabs.setupWithViewPager(viewPager)
 
         setSupportActionBar(findViewById(R.id.toolbar))
+
+        createNotifChannel(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -72,4 +74,6 @@ class MainActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+
 }

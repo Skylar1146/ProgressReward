@@ -11,4 +11,7 @@
     <string name="timerPause">Pause</string>
     <string name="timerResume">Resume</string>
     <string name="timerStop">Stop</string>
+    <string name="notifTitle">NOTIF TITLE</string>
+    <string name="notifChannelID">NOTIF CHANNEL</string>
+
 </resources>
