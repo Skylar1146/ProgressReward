@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16sp">
+
+
+
+    <TextView
+        android:id="@+id/dlgTimerRewardName"
+        android:layout_width="255dp"
+        android:layout_height="wrap_content"
+        android:text="Watch TV"
+        android:textAlignment="center"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="1hr 30m 50s"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        android:layout_marginTop="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dlgTimerRewardName" />
+
+    <Button
+        android:id="@+id/btnLeft"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32sp"
+        android:layout_marginLeft="32sp"
+        android:backgroundTint="@color/rwdOrange"
+        android:foreground="@drawable/ic_resume_foreground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTimer" />
+
+    <Button
+        android:id="@+id/btnStop"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="32sp"
+        android:layout_marginTop="32sp"
+        android:backgroundTint="@color/rwdOrange"
+        android:foreground = "@drawable/ic_stop_foreground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTimer" />
+</androidx.constraintlayout.widget.ConstraintLayout>

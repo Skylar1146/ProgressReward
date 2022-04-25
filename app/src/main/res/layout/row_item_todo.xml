@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/red"> <!--Add your background color here-->
+
+        <ImageView
+            android:id="@+id/delete_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            app:srcCompat="@drawable/ic_delete_foreground"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/delete_icon"
+            android:text="Swipe to delete"
+            android:textColor="#fff"
+            android:textSize="13dp" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/backgroundComplete"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/complete">
+
+        <ImageView
+            android:id="@+id/completeIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            app:srcCompat="@drawable/ic_check_foreground" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@id/completeIcon"
+            android:text="Complete Task"
+            android:textColor="#fff"
+            android:textSize="13dp" />
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/foreground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/taskBlue">
+
+
+        <TextView
+            android:id="@+id/historyPtText"
+            android:layout_width="250sp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+
+            android:text="Text"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/pointsGiven"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/pointIcon"
+            android:layout_marginEnd="8dp"
+            android:layout_toStartOf="@id/pointIcon"
+            android:text="+5"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/pointIcon"
+            app:layout_constraintEnd_toStartOf="@+id/pointIcon"
+            app:layout_constraintTop_toTopOf="@+id/pointIcon" />
+
+        <ImageView
+            android:id="@+id/pointIcon"
+
+            android:layout_width="24sp"
+            android:layout_height="32sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_star_foreground" />
+
+        <TextView
+            android:id="@+id/txtDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/timeImage"
+            android:layout_marginEnd="8dp"
+            android:layout_toStartOf="@id/timeImage"
+            android:text="5 days"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/timeImage"
+            app:layout_constraintEnd_toStartOf="@+id/timeImage"
+            app:layout_constraintTop_toBottomOf="@+id/pointIcon" />
+
+        <ImageView
+            android:id="@+id/timeImage"
+            android:layout_width="24sp"
+            android:layout_height="32sp"
+            android:layout_below="@id/pointsGiven"
+            android:layout_alignParentEnd="true"
+
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pointIcon"
+            app:srcCompat="@drawable/ic_time_foreground" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

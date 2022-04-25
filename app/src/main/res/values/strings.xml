@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">TodoReward</string>
+    <string name="tabTodo">To-Do</string>
+    <string name="tabRewards">Rewards</string>
+    <string name="lblPoints">Points:</string>
+    <string name="lblTaskName">Task:</string>
+    <string name="lblPointCost">Point Cost:</string>
+    <string name="lblReward">Reward Name:</string>
+    <string name="timerStart">Start</string>
+    <string name="timerExit">Exit</string>
+    <string name="timerPause">Pause</string>
+    <string name="timerResume">Resume</string>
+    <string name="timerStop">Stop</string>
+    <string name="notifTitle">NOTIF TITLE</string>
+    <string name="notifChannelID">NOTIF CHANNEL</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
