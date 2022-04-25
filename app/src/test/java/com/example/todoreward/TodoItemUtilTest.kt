@@ -1,5 +1,6 @@
 package com.example.todoreward
 
+import com.example.todoreward.task.ItemToDo
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import java.util.*

@@ -86,6 +86,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
+    <property name="android-custom-viewC:/Users/skyla/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.5.0/8d3b87c7463f55053836b805e014cb238f64757a/material-1.5.0-sources.jar!/com/google/android/material/tabs/TabLayout.java_SELECTED" value="TabLayout" />
+    <property name="android-custom-viewC:/Users/skyla/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.5.0/8d3b87c7463f55053836b805e014cb238f64757a/material-1.5.0-sources.jar!/com/google/android/material/tabs/TabLayout.java_TabLayout_DIMENSIONS" value="1080&#10;1920" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
@@ -101,6 +103,9 @@
       <recent name="C:\Users\skyla\Documents\Android Apps\ProgressRewardAndStu\app\src\main\res\layout" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\skyla\Documents\Android Apps\ProgressRewardAndStu\app\src\main\java\com\example\todoreward\pointHistory" />
+      <recent name="C:\Users\skyla\Documents\Android Apps\ProgressRewardAndStu\app\src\main\java\com\example\todoreward\reward" />
+      <recent name="C:\Users\skyla\Documents\Android Apps\ProgressRewardAndStu\app\src\main\java\com\example\todoreward\task" />
       <recent name="C:\Users\skyla\Documents\Android Apps\ProgressRewardAndStu\app\src\main\java\com\example\todoreward" />
       <recent name="C:\Users\skyla\Documents\Android Apps\TodoReward\app\src\main\res\drawable" />
     </key>

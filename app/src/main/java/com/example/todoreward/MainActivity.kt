@@ -35,13 +35,20 @@ class MainActivity : AppCompatActivity() {
     {
         val tabLayout = binding.tabs
         val tab = tabLayout.getTabAt(2)
+
         if (tab != null) {
-            tab.text = resources.getString(TAB_TITLES[2]) + ptAmount.toString()
+            tab.text =ptAmount.toString()
         }
 
     }
 
 
+    fun setTabIcons()
+    {
+        val tabLayout = binding.tabs
+        tabLayout.getTabAt(2)?.setIcon(R.drawable.ic_star_foreground);
+
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -53,7 +60,10 @@ class MainActivity : AppCompatActivity() {
         val viewPager: ViewPager = binding.viewPager
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = binding.tabs
+
+
         tabs.setupWithViewPager(viewPager)
+        setTabIcons()
 
         setSupportActionBar(findViewById(R.id.toolbar))
 

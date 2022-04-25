@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -29,6 +30,7 @@
             android:text="Swipe to delete"
             android:textColor="#fff"
             android:textSize="13dp" />
+
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/backgroundComplete"
@@ -56,32 +58,77 @@
             android:textSize="13dp" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:padding="20dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/foreground"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@color/taskBlue">
 
-    <TextView
-        android:id="@+id/historyPtText"
-        android:layout_width="250sp"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:text="Text"
 
-        android:textColor="#000000"
-         />
+        <TextView
+            android:id="@+id/historyPtText"
+            android:layout_width="250sp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+
+            android:text="Text"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/pointsGiven"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:text="+5 Pts"
-            android:textSize="24sp" />
+            android:layout_alignTop="@id/pointIcon"
+            android:layout_marginEnd="8dp"
+            android:layout_toStartOf="@id/pointIcon"
+            android:text="+5"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/pointIcon"
+            app:layout_constraintEnd_toStartOf="@+id/pointIcon"
+            app:layout_constraintTop_toTopOf="@+id/pointIcon" />
 
-    </RelativeLayout>
+        <ImageView
+            android:id="@+id/pointIcon"
+
+            android:layout_width="24sp"
+            android:layout_height="32sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_star_foreground" />
+
+        <TextView
+            android:id="@+id/txtDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/timeImage"
+            android:layout_marginEnd="8dp"
+            android:layout_toStartOf="@id/timeImage"
+            android:text="5 days"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/timeImage"
+            app:layout_constraintEnd_toStartOf="@+id/timeImage"
+            app:layout_constraintTop_toBottomOf="@+id/pointIcon" />
+
+        <ImageView
+            android:id="@+id/timeImage"
+            android:layout_width="24sp"
+            android:layout_height="32sp"
+            android:layout_below="@id/pointsGiven"
+            android:layout_alignParentEnd="true"
+
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pointIcon"
+            app:srcCompat="@drawable/ic_time_foreground" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

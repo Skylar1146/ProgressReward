@@ -10,6 +10,7 @@
         <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/drawable/ic_star_background.xml" value="0.26" />
         <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/drawable/ic_star_foreground.xml" value="0.26" />
         <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/drawable/ic_stop_foreground.xml" value="0.461" />
+        <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/drawable/ic_time_foreground.xml" value="0.443" />
         <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/drawable/reward_row_drawable.xml" value="0.45" />
         <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/layout/activity_main.xml" value="0.42916666666666664" />
         <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/layout/dialog_add_rwd.xml" value="0.453804347826087" />
@@ -21,7 +22,7 @@
         <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/layout/fragment_main.xml" value="0.43523550724637683" />
         <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/layout/row_item_historyPoint.xml" value="0.4" />
         <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/layout/row_item_historypoint.xml" value="0.1" />
-        <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/layout/row_item_reward.xml" value="0.536" />
+        <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/layout/row_item_reward.xml" value="0.72" />
         <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/layout/row_item_todo.xml" value="0.4" />
         <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/layout/timer_picker_frag.xml" value="0.6125" />
         <entry key="..\:/Users/skyla/Documents/Android Apps/TodoReward/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.425" />

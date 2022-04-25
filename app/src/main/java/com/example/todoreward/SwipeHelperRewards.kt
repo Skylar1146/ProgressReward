@@ -4,6 +4,7 @@ import android.graphics.Canvas
 import android.view.View
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.example.todoreward.reward.AdapterReward
 
 
 abstract class SwipeHelperRewards(

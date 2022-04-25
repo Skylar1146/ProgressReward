@@ -44,7 +44,7 @@ fun sendNotif(context: Context,title: String, message: String) {
     val pendingIntent: PendingIntent =
         PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
     //Convert drawable to bitmap
-    val bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.ic_pause_foreground)
+    //val bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.ic_pause_foreground)
 
 
     val builder = NotificationCompat.Builder(context, NOTIF_CHANNEL_ID)
