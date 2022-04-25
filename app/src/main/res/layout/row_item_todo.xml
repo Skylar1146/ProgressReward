@@ -64,7 +64,7 @@
         android:background="@color/taskBlue">
 
     <TextView
-        android:id="@+id/item_text"
+        android:id="@+id/historyPtText"
         android:layout_width="250sp"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"

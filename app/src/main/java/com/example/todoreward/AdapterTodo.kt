@@ -52,7 +52,7 @@ class AdapterToDo(todolist: MutableList<ItemToDo>) :
         val background : RelativeLayout = row.findViewById(R.id.background) as RelativeLayout
 
 
-        val textLabel: TextView = row.findViewById(R.id.item_text) as TextView
+        val textLabel: TextView = row.findViewById(R.id.historyPtText) as TextView
         val ptLabel: TextView = row.findViewById(R.id.pointsGiven) as TextView
     }
 }

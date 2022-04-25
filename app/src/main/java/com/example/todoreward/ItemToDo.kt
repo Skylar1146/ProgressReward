@@ -3,7 +3,6 @@ package com.example.todoreward
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import java.time.LocalDateTime
 import java.util.*
 
 /*
@@ -62,11 +61,20 @@ class ItemToDo  {
 class TodoItemModel: ViewModel()
 {
     private val mutableToDoItem = MutableLiveData<ItemToDo>()
-    val selectedItemToDo : LiveData<ItemToDo> get() = mutableToDoItem
+    private val completedToDoItem = MutableLiveData<ItemToDo>()
 
-    fun setItem(todoItemToDo:ItemToDo)
+    val selectedItemToDo : LiveData<ItemToDo> get() = mutableToDoItem
+    val taskCompleted : LiveData<ItemToDo> get() = completedToDoItem
+
+
+    fun setTaskCompleted(task:ItemToDo)
     {
-        mutableToDoItem.value = todoItemToDo
+        completedToDoItem.value = task
+    }
+
+    fun setItem(task:ItemToDo)
+    {
+        mutableToDoItem.value = task
     }
 
 }

@@ -7,6 +7,8 @@
         <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/drawable/ic_pause_foreground.xml" value="0.461" />
         <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/drawable/ic_resume_background.xml" value="0.468" />
         <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/drawable/ic_resume_foreground.xml" value="0.468" />
+        <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/drawable/ic_star_background.xml" value="0.26" />
+        <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/drawable/ic_star_foreground.xml" value="0.26" />
         <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/drawable/ic_stop_foreground.xml" value="0.461" />
         <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/drawable/reward_row_drawable.xml" value="0.45" />
         <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/layout/activity_main.xml" value="0.42916666666666664" />
@@ -15,6 +17,10 @@
         <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/layout/dialog_timer_reward.xml" value="0.264" />
         <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/layout/fragment_frag__reward_list.xml" value="0.42916666666666664" />
         <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/layout/fragment_frag__to_do_list.xml" value="0.2526041666666667" />
+        <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/layout/fragment_list_point_history.xml" value="0.43523550724637683" />
+        <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/layout/fragment_main.xml" value="0.43523550724637683" />
+        <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/layout/row_item_historyPoint.xml" value="0.4" />
+        <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/layout/row_item_historypoint.xml" value="0.1" />
         <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/layout/row_item_reward.xml" value="0.536" />
         <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/layout/row_item_todo.xml" value="0.4" />
         <entry key="..\:/Users/skyla/Documents/Android Apps/ProgressRewardAndStu/app/src/main/res/layout/timer_picker_frag.xml" value="0.6125" />

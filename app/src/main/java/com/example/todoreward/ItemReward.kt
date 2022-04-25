@@ -38,7 +38,15 @@ class ItemReward {
 
 class RewardItemModel : ViewModel() {
     private val mutableToDoItem = MutableLiveData<ItemReward>()
+    private val redeemedRewardItem = MutableLiveData<ItemReward>()
+
     val selectedItemReward: LiveData<ItemReward> get() = mutableToDoItem
+    val redeemedReward: LiveData<ItemReward> get() = redeemedRewardItem
+
+    fun setRewardRedeemed(reward:ItemReward)
+    {
+        redeemedRewardItem.value = reward
+    }
 
     fun setItem(todoItemReward: ItemReward) {
         mutableToDoItem.value = todoItemReward

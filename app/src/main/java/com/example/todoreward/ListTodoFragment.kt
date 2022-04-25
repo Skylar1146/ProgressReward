@@ -37,12 +37,14 @@ class ListTodoFragment : Fragment() {
     lateinit var adapterToDo: AdapterToDo
     private lateinit var recyclerView: RecyclerView
 
-
     private val viewModel: TodoItemModel by activityViewModels()
+
     lateinit var mContext: Context
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mContext = context
+
+
     }
 
 
@@ -60,7 +62,7 @@ class ListTodoFragment : Fragment() {
         )
         val ptRewards = arrayOf(1, 2, 1, 2, 4, 6, 2, 2, 1)
         for (i in todoItems.indices) {
-            var newTodoItem = ItemToDo.createToDoItem()
+            val newTodoItem = ItemToDo.createToDoItem()
             newTodoItem.taskName = todoItems[i]
             newTodoItem.UID = i.toString()
             newTodoItem.points = ptRewards[i]
@@ -107,7 +109,7 @@ class ListTodoFragment : Fragment() {
         val delayInSeconds = (userSelectedDateTime.timeInMillis/1000L) - (todayDateTime.timeInMillis/1000L)
 
 
-        scheduleNotification(mContext, "${itemToDo.taskName.toString()}", delayInSeconds)
+        scheduleNotification(mContext, itemToDo.taskName.toString(), delayInSeconds)
         adapterToDo.notifyDataSetChanged()
     }
 
@@ -125,7 +127,7 @@ class ListTodoFragment : Fragment() {
         recyclerView.adapter = adapterToDo
 
         //Add spaces to recycler view items
-        var spacingItemDecorator = SpacingItemDecoration()
+        val spacingItemDecorator = SpacingItemDecoration()
         recyclerView.addItemDecoration(spacingItemDecorator)
 
 
@@ -144,6 +146,7 @@ class ListTodoFragment : Fragment() {
                             "Completed task '" + todoItemToDos!![pos].taskName + "'",
                             mContext
                         )
+                        viewModel.setTaskCompleted(todoItemToDos!![pos])
                     }
 
                     todoItemToDos!!.removeAt(pos)
@@ -183,8 +186,8 @@ class ListTodoFragment : Fragment() {
                     override fun onLongItemClick(view: View?, position: Int) {
                         val item: ItemToDo = todoItemToDos!![position]
 
-                        var dialog = DialogAddTodo()
-                        var args: Bundle = Bundle()
+                        val dialog = DialogAddTodo()
+                        val args: Bundle = Bundle()
                         args.putIntArray(
                             dialog.ARG_DATE_ARRAY,
                             intArrayOf(item.year, item.month, item.day)
@@ -215,7 +218,7 @@ class ListTodoFragment : Fragment() {
 
         val fab = view.findViewById<FloatingActionButton>(R.id.fabAddTask)
         fab?.setOnClickListener {
-            var dialog = DialogAddTodo()
+            val dialog = DialogAddTodo()
             dialog.show(childFragmentManager, DialogAddTodo.TAG)
         }
 

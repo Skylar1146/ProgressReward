@@ -4,10 +4,7 @@ import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.example.todoreward.ListRewardFragment
-import com.example.todoreward.ListTodoFragment
-import com.example.todoreward.R
-import com.example.todoreward.ptAmount
+import com.example.todoreward.*
 
 val TAB_TITLES = arrayOf(
     R.string.tabTodo,
@@ -26,11 +23,11 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
     //return what fragment to show on change tab
     override fun getItem(position: Int): Fragment {
         // getItem is called to instantiate the fragment for the given page.
-        return if (position == 0)
-            ListTodoFragment.newInstance("", "")
-        else
-            ListRewardFragment.newInstance("", "")
-        //todo: point page
+        return when (position) {
+            0 -> ListTodoFragment.newInstance("", "")
+            1 -> ListRewardFragment.newInstance("", "")
+            else -> ListPointHistoryFragment.newInstance("","")
+        }
     }
 
     override fun getPageTitle(position: Int): CharSequence? {

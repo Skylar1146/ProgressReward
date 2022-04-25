@@ -28,6 +28,7 @@ class ListRewardFragment : Fragment() {
     private var param2: String? = null
 
     private val viewModel: RewardItemModel by activityViewModels()
+
     private var listReward: MutableList<ItemReward>? = null
     lateinit var adapterReward: AdapterReward
     private lateinit var recyclerView: RecyclerView
@@ -79,6 +80,7 @@ class ListRewardFragment : Fragment() {
             adapterReward.notifyItemRemoved(pos)
         }
 
+        viewModel.setRewardRedeemed(rewardItem)
 
         toast("Collected Reward '" + rewardItem.rewardName + "'", mContext)
     }
@@ -90,7 +92,7 @@ class ListRewardFragment : Fragment() {
         recyclerView.adapter = adapterReward
 
         //Add spaces to recycler view items
-        var spacingItemDecorator: SpacingItemDecoration = SpacingItemDecoration()
+        var spacingItemDecorator = SpacingItemDecoration()
         recyclerView.addItemDecoration(spacingItemDecorator)
 
 

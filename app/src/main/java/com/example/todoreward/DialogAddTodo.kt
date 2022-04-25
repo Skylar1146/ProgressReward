@@ -73,8 +73,8 @@ class DialogAddTodo : DialogFragment(), DatePickerDialog.OnDateSetListener {
         addBut.setOnClickListener()
         {
             val taskName = taskNameText.text.toString()
-            var pts = 0
 
+            var pts = 0
             try {
                 pts = ptText.text.toString().toInt()
             } catch (nfe: NumberFormatException) {
